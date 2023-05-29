@@ -1,0 +1,353 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "QIANGLI, Q10-(320*160),outdoor",
+      "description": "6000 nits.44w 1/2 scan, SMD3535, реком пит 4,5v под заказ",
+      "preview": "",
+      "category": 1,
+      "price": 22.0,
+      "data_creating": "2023-05-29T12:07:17.311Z",
+      "data_updating": "2023-05-29T12:07:17.311Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "QIANGLI, Q8-Pro(320*160),outdoor",
+      "description": "5500 nits.44w 1/5 scan, SMD3535,3840hz, реком пит 4,5v",
+      "preview": "",
+      "category": 1,
+      "price": 16.5,
+      "data_creating": "2023-05-29T12:08:30.932Z",
+      "data_updating": "2023-05-29T12:08:30.932Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "QIANGLI, Q8-Eco (320*160),outdoor",
+      "description": "5500 nits.44w 1/5 scan, SMD3535,1920hz, реком пит 4,5v",
+      "preview": "",
+      "category": 1,
+      "price": 14.5,
+      "data_creating": "2023-05-29T12:09:05.068Z",
+      "data_updating": "2023-05-29T12:09:05.068Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "QIANGLI, Q5-Eco (320*160),outdoor",
+      "description": "5500 nits.43w 1/8 scan, SMD2525,1920hz, реком пит 4,5v",
+      "preview": "",
+      "category": 1,
+      "price": 17.6,
+      "data_creating": "2023-05-29T12:09:51.926Z",
+      "data_updating": "2023-05-29T12:09:51.926Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "name": "QIANGLI, Q3,07-PRO (320*160),indoor",
+      "description": "700 nits.22w 1/26 scan SMD2020,3840hz, реком пит 4,5v",
+      "preview": "",
+      "category": 1,
+      "price": 22.5,
+      "data_creating": "2023-05-29T12:10:28.075Z",
+      "data_updating": "2023-05-29T12:10:28.075Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "name": "QIANGLI, Q2,5-Eco (320*160),indoor",
+      "description": "800 nits.24w 1/32 scan,SMD2020,19200hz, реком пит 4,5v",
+      "preview": "",
+      "category": 1,
+      "price": 20.5,
+      "data_creating": "2023-05-29T12:11:02.044Z",
+      "data_updating": "2023-05-29T12:11:02.044Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+      "name": "Novastar MSD 300",
+      "description": "1280*1024,1024*1200,1600*848,1920*712,2048*668;2 выхода",
+      "preview": "",
+      "category": 3,
+      "price": 115.0,
+      "data_creating": "2023-05-29T12:11:50.852Z",
+      "data_updating": "2023-05-29T12:11:50.852Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 9,
+    "fields": {
+      "name": "Novastar MSD 600",
+      "description": "2048*1152,1920*1200,2560*960;4 выхода",
+      "preview": "",
+      "category": 3,
+      "price": 255.0,
+      "data_creating": "2023-05-29T12:12:24.365Z",
+      "data_updating": "2023-05-29T12:54:46.874Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 10,
+    "fields": {
+      "name": "Novastar MRV 412",
+      "description": "512*512,32 групп, с HUB75,SmartGamma,ClearView,18bit+пов уров. серого, 3D",
+      "preview": "",
+      "category": 3,
+      "price": 19.7,
+      "data_creating": "2023-05-29T12:13:17.796Z",
+      "data_updating": "2023-05-29T12:13:17.796Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 11,
+    "fields": {
+      "name": "Novastar MRV 416",
+      "description": "512*256,32 групп,с HUB75,SmartGamma,ClearView,18bit+пов уров серого",
+      "preview": "",
+      "category": 3,
+      "price": 20.5,
+      "data_creating": "2023-05-29T12:13:47.674Z",
+      "data_updating": "2023-05-29T12:13:47.674Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 12,
+    "fields": {
+      "name": "Асинхронный контроллер TB1",
+      "description": "650 тыс пикс,поддерж управл с телефона,воспроизв с флеш",
+      "preview": "",
+      "category": 3,
+      "price": 90.0,
+      "data_creating": "2023-05-29T12:14:31.895Z",
+      "data_updating": "2023-05-29T12:14:31.895Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 13,
+    "fields": {
+      "name": "Асинхронный контроллер TB2",
+      "description": "650 тыс пикс,поддерж синхр режима,поддерж упр с тел,воспр в флеш",
+      "preview": "",
+      "category": 3,
+      "price": 138.0,
+      "data_creating": "2023-05-29T12:15:06.631Z",
+      "data_updating": "2023-05-29T12:15:06.631Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 14,
+    "fields": {
+      "name": "Novastar MCTRL 300",
+      "description": "MSD300 в корпусе, 1,3млн пикс",
+      "preview": "",
+      "category": 3,
+      "price": 171.0,
+      "data_creating": "2023-05-29T12:15:37.375Z",
+      "data_updating": "2023-05-29T12:15:37.375Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 15,
+    "fields": {
+      "name": "Novastar MCTRL 600",
+      "description": "MSD600 в корпусе, 2,6млн пикс",
+      "preview": "",
+      "category": 3,
+      "price": 315.0,
+      "data_creating": "2023-05-29T12:16:14.333Z",
+      "data_updating": "2023-05-29T12:16:14.333Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 16,
+    "fields": {
+      "name": "NovaPro HD",
+      "description": "2.3милл.пикселей;DMX512 и GenLock; управление вебстраницей",
+      "preview": "",
+      "category": 6,
+      "price": 2600.0,
+      "data_creating": "2023-05-29T12:17:06.651Z",
+      "data_updating": "2023-05-29T12:17:06.651Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 17,
+    "fields": {
+      "name": "VX400S",
+      "description": "Отправл контрол+видеопроц 2,3 млн пикс,4 порта",
+      "preview": "",
+      "category": 6,
+      "price": 560.0,
+      "data_creating": "2023-05-29T12:17:41.855Z",
+      "data_updating": "2023-05-29T12:17:41.855Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 18,
+    "fields": {
+      "name": "Кабинет алюминиевый 640х640 с коммутацией",
+      "description": "Indoor/Outdoor,в комплекте пластина под блок пит,карту. 640*640*70мм",
+      "preview": "",
+      "category": 5,
+      "price": 95.0,
+      "data_creating": "2023-05-29T12:19:04.508Z",
+      "data_updating": "2023-05-29T12:19:04.508Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 19,
+    "fields": {
+      "name": "Раскодировать как в предыдущий раз  Hint\nКабинет алюминиевый 512х512 с коммутацией",
+      "description": "только Indoor",
+      "preview": "",
+      "category": 5,
+      "price": 81.0,
+      "data_creating": "2023-05-29T12:19:36.389Z",
+      "data_updating": "2023-05-29T12:19:36.389Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 20,
+    "fields": {
+      "name": "Кабинет алюминиевый 576х576 с коммутацией",
+      "description": "Indoor/Outdoor, в компл пластина под блок пит,карту. 576*576*70мм",
+      "preview": "",
+      "category": 5,
+      "price": 75.0,
+      "data_creating": "2023-05-29T12:20:10.110Z",
+      "data_updating": "2023-05-29T12:20:10.110Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 21,
+    "fields": {
+      "name": "Кабинет алюминиевый 960х960 outdoor с коммутацией",
+      "description": "Подходит только для уличных модулей 960*960*85,8мм",
+      "preview": "",
+      "category": 5,
+      "price": 190.0,
+      "data_creating": "2023-05-29T12:20:41.194Z",
+      "data_updating": "2023-05-29T12:20:41.194Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 22,
+    "fields": {
+      "name": "Блок питания A-200AF-4,5 slim",
+      "description": "190*84*30mm IP20,реком нагрузка 70%",
+      "preview": "",
+      "category": 2,
+      "price": 9.5,
+      "data_creating": "2023-05-29T12:21:26.131Z",
+      "data_updating": "2023-05-29T12:21:26.131Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 23,
+    "fields": {
+      "name": "Блок питания А-300АК-4,5 slim",
+      "description": "217*117*30mm IP20,cooller,реком нагрузка 70%",
+      "preview": "",
+      "category": 2,
+      "price": 15.5,
+      "data_creating": "2023-05-29T12:22:04.903Z",
+      "data_updating": "2023-05-29T12:22:04.903Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 24,
+    "fields": {
+      "name": "Блок питания A-400AK-4,5 slim",
+      "description": "217*117*30mm IP20,cooler,реком нагрузка 70%",
+      "preview": "",
+      "category": 2,
+      "price": 19.0,
+      "data_creating": "2023-05-29T12:22:34.830Z",
+      "data_updating": "2023-05-29T12:22:34.830Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 25,
+    "fields": {
+      "name": "Блок питания A-350AK-4,5 slim",
+      "description": "215*115*30mm IP20,cooler,реком нагрузка 70%",
+      "preview": "",
+      "category": 2,
+      "price": 17.5,
+      "data_creating": "2023-05-29T12:22:57.326Z",
+      "data_updating": "2023-05-29T12:22:57.326Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 26,
+    "fields": {
+      "name": "Оцинковка 45*10*0,8",
+      "description": "20хл/3м/упак",
+      "preview": "",
+      "category": 4,
+      "price": 1.2,
+      "data_creating": "2023-05-29T12:23:38.634Z",
+      "data_updating": "2023-05-29T12:23:38.634Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 27,
+    "fields": {
+      "name": "Вентилятор 120х120х25",
+      "description": "5В",
+      "preview": "",
+      "category": 4,
+      "price": 8.0,
+      "data_creating": "2023-05-29T12:24:13.505Z",
+      "data_updating": "2023-05-29T12:24:13.505Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 28,
+    "fields": {
+      "name": "Шлейф бухта 200м",
+      "description": "Медный",
+      "preview": "",
+      "category": 4,
+      "price": 65.0,
+      "data_creating": "2023-05-29T12:24:52.485Z",
+      "data_updating": "2023-05-29T12:24:52.485Z"
+    }
+  }
+]
