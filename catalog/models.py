@@ -19,7 +19,7 @@ class Product(models.Model):
 
     name = models.CharField(max_length=100, verbose_name='Наименование')
     description = models.TextField(verbose_name='Описание', **NULLABLE)
-    preview = models.ImageField(upload_to='preview', **NULLABLE)
+    preview = models.ImageField(upload_to='preview', default='preview/default.JPG')
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, verbose_name='Категория', **NULLABLE)
     price = models.FloatField(verbose_name='Цена')
     data_creating = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
