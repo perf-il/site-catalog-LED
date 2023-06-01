@@ -5,7 +5,7 @@
     "fields": {
       "name": "QIANGLI, Q10-(320*160),outdoor",
       "description": "6000 nits.44w 1/2 scan, SMD3535, реком пит 4,5v под заказ",
-      "preview": "",
+      "preview": "preview/module_outdoor.jpeg",
       "category": 1,
       "price": 22.0,
       "data_creating": "2023-05-29T12:07:17.311Z",
@@ -18,7 +18,7 @@
     "fields": {
       "name": "QIANGLI, Q8-Pro(320*160),outdoor",
       "description": "5500 nits.44w 1/5 scan, SMD3535,3840hz, реком пит 4,5v",
-      "preview": "",
+      "preview": "preview/module_outdoor.jpeg",
       "category": 1,
       "price": 16.5,
       "data_creating": "2023-05-29T12:08:30.932Z",
@@ -31,7 +31,7 @@
     "fields": {
       "name": "QIANGLI, Q8-Eco (320*160),outdoor",
       "description": "5500 nits.44w 1/5 scan, SMD3535,1920hz, реком пит 4,5v",
-      "preview": "",
+      "preview": "preview/module_outdoor.jpeg",
       "category": 1,
       "price": 14.5,
       "data_creating": "2023-05-29T12:09:05.068Z",
@@ -44,7 +44,7 @@
     "fields": {
       "name": "QIANGLI, Q5-Eco (320*160),outdoor",
       "description": "5500 nits.43w 1/8 scan, SMD2525,1920hz, реком пит 4,5v",
-      "preview": "",
+      "preview": "preview/module_outdoor.jpeg",
       "category": 1,
       "price": 17.6,
       "data_creating": "2023-05-29T12:09:51.926Z",
@@ -57,7 +57,7 @@
     "fields": {
       "name": "QIANGLI, Q3,07-PRO (320*160),indoor",
       "description": "700 nits.22w 1/26 scan SMD2020,3840hz, реком пит 4,5v",
-      "preview": "",
+      "preview": "preview/module_outdoor.jpeg",
       "category": 1,
       "price": 22.5,
       "data_creating": "2023-05-29T12:10:28.075Z",
@@ -70,7 +70,7 @@
     "fields": {
       "name": "QIANGLI, Q2,5-Eco (320*160),indoor",
       "description": "800 nits.24w 1/32 scan,SMD2020,19200hz, реком пит 4,5v",
-      "preview": "",
+      "preview": "preview/module_outdoor.jpeg",
       "category": 1,
       "price": 20.5,
       "data_creating": "2023-05-29T12:11:02.044Z",

@@ -31,8 +31,24 @@ class Command(BaseCommand):
         with open('.\catalog\data\product_data.json') as f:
             data_product = json.load(f)
         product_list = []
-        for product in data_product:
-            product_list.append(Product(**product.get('fields')))
+        for i, product in enumerate(data_product):
+
+            field = product.get('fields')
+            name = field.get('name')
+            description = field.get('description')
+            preview = field.get('preview')
+            category = Category.objects.get(pk=field.get('category'))
+            price = field.get('price')
+            data_creating = field.get('data_creating')
+            data_updating = field.get('data_updating')
+
+            product_list.append(Product(name=name,
+                                        description=description,
+                                        preview=preview,
+                                        category=category,
+                                        price=price,
+                                        data_creating=data_creating,
+                                        data_updating=data_updating))
 
         Product.objects.bulk_create(product_list)
 
