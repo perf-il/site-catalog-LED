@@ -1,0 +1,38 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+  {% block content %}
+
+      <div class="container">
+
+          <div class="card-deck mb-3 text-center">
+
+            <div class="card mb-4 box-shadow">
+
+              <div class="card-header">
+                <h4 class="my-0 font-weight-normal">{{ object.name }}</h4>
+              </div>
+
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title">${{ object.price }} </h1>
+                {% if object.preview %}
+                  <div><img src='{% mediapath object.preview %}'  align="left" width="100%" height="100%"></div>
+                {% else %}
+                  <div><img src="/media/preview/default.JPG" align="left" width="100%" height="100%"></div>
+                {% endif %}
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li><b>Описание:</b> {{ object.description | title }}</li>
+
+                </ul>
+                <p><b>Категория:</b> {{ object.category}}</p>
+
+                <p><b>Дата создания:</b> {{ object.data_creating }}</p>
+                <p><b>Дата редактирования:</b> {{ object.data_updating }}</p>
+                <a href="{% url 'catalog:contact' %}"><button type="button" class="btn btn-lg btn-block btn-outline-primary" >Заказать</button></a>
+              </div>
+
+            </div>
+
+          </div>
+
+      </div>
+  {% endblock %}
