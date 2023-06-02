@@ -14,17 +14,27 @@ class Command(BaseCommand):
     )
 
     def handle(self, conn=connect, *args, **options):
-        with conn:
-            with conn.cursor() as cur:
-                cur.execute(f"TRUNCATE catalog_product RESTART IDENTITY;"
-                            f"TRUNCATE catalog_category RESTART IDENTITY CASCADE;\n")
-            print('Tables catalog_product and catalog_category were cleared')
+
+        Category.objects.all().delete()
+        Product.objects.all().delete()
+        # with conn:
+        #     with conn.cursor() as cur:
+        #         cur.execute(f"TRUNCATE catalog_product RESTART IDENTITY;"
+        #                     f"TRUNCATE catalog_category RESTART IDENTITY CASCADE;\n")
+        #     print('Tables catalog_product and catalog_category were cleared')
 
         with open('.\catalog\data\catalog_data.json') as f:
             data_category = json.load(f)
         category_list = []
-        for table in data_category:
-            category_list.append(Category(**table.get('fields')))
+        for category in data_category:
+            category_id = category.get("pk")
+            field = category.get('fields')
+            name = field.get('name')
+            description = field.get('description')
+
+            category_list.append(Category(name=name,
+                                          description=description,
+                                          pk=category_id))
 
         Category.objects.bulk_create(category_list)
 
@@ -33,6 +43,7 @@ class Command(BaseCommand):
         product_list = []
         for i, product in enumerate(data_product):
 
+            product_id = i + 1
             field = product.get('fields')
             name = field.get('name')
             description = field.get('description')
@@ -48,7 +59,8 @@ class Command(BaseCommand):
                                         category=category,
                                         price=price,
                                         data_creating=data_creating,
-                                        data_updating=data_updating))
+                                        data_updating=data_updating,
+                                        pk=product_id))
 
         Product.objects.bulk_create(product_list)
 
