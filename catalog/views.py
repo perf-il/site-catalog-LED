@@ -9,7 +9,7 @@ def home(request):
         'product_list': product_list,
         'title': 'Каталог'
     }
-    return render(request, 'catalog\\home.html', context)
+    return render(request, 'catalog/home.html', context)
 
 
 def contacts(request):
@@ -23,7 +23,8 @@ def contacts(request):
         'title': 'Контакты'
     }
 
-    return render(request, 'catalog\\contacts.html', context)
+    return render(request, 'catalog/contacts.html', context)
+
 
 def product_card(request, product_id):
     product = Product.objects.get(id=product_id)
@@ -31,4 +32,4 @@ def product_card(request, product_id):
         'object': product,
         'title': product.name
     }
-    return render(request, 'catalog\\product_card.html', context)
+    return render(request, 'catalog/product_card.html', context)
