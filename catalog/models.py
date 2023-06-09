@@ -1,4 +1,5 @@
 from datetime import datetime
+from transliterate import slugify
 
 from django.db import models
 
@@ -27,3 +28,25 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.name}, {self.category}"
+
+
+class Blog(models.Model):
+
+    title_name = models.CharField(max_length=150, verbose_name='Заголовок')
+    slug = models.CharField(default=slugify(str(title_name)), max_length=150)
+    content = models.TextField(verbose_name='Текст', **NULLABLE)
+    preview = models.ImageField(upload_to='blog/preview', default='preview/default.JPG', verbose_name='Изображение')
+    data_creating = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+    is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
+    view_count = models.IntegerField(default=0)
+
+    def add_view(self):
+        self.view_count += 1
+        return self.view_count
+
+    def delete(self, *args, **kwargs):
+        self.is_published = False
+        self.save()
+
+    def __str__(self):
+        return f"{self.title_name}"
