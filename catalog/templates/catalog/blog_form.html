@@ -1,0 +1,50 @@
+{% extends 'catalog/base.html' %}
+  {% block content %}
+
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Написать статью в блог</h1>
+    </div>
+
+        <div class="container">
+
+                <div class="col-lg-5 col-md-6 col-sm-12">
+                    <div class="card mb-3 box-shadow">
+
+                        <div class="card-body">
+                            <form method="post" id="new_article">
+                                {% csrf_token %}
+                                <div class="create-blog">{{ form.as_p }}</div>
+
+                            </form>
+                            <button type="submit" form="new_article" class="btn btn-lg btn-block btn-outline-primary">Опубликовать</button>
+                            <a href="{% url 'catalog:blog' %}" type="button" class="btn btn-lg btn-block btn-outline-warning">Вернуться</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+        </div>
+
+        {% endblock %}
+
+                     <!--
+                        <form method="post" id="new_article" action="" class="form-floating">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="title_name">Заголовок</label>
+                                <input type="text" name="name" class="form-control" id="title_name" placeholder="Заголовок статьи" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="content">Текст статьи</label>
+                                <textarea type="text" name="message" class="form-control" id="content" placeholder="Текст статьи" required></textarea>
+                            </div>
+
+                          <div class="mb-3">
+                                <label for="content">Изображение</label>
+                                <input type="file" name="preview" class="form-control" id="preview"> </input>
+                            </div>
+                        </form>
+
+                        <button type="submit" form="new_article" class="btn btn-lg btn-block btn-outline-primary">Опубликовать</button> -->
