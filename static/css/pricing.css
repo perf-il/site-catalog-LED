@@ -118,3 +118,18 @@ html {
          display: block;
          width: 100%;
       }
+
+.create-blog {
+         margin-top: 20px;
+         text-align: center;
+         padding: 20px;
+         border-top: 1px solid #F1E7E8;
+         background: #F1E7E8;
+
+}
+
+#id_title_name {
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+}
