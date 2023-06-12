@@ -71,7 +71,8 @@ class BlogDetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
-        context_data['title'] = self.get_object()
+        context_data['title'] = context_data['object']
+
         return context_data
 
 
