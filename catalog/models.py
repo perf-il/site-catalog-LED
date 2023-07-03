@@ -50,3 +50,15 @@ class Blog(models.Model):
 
     def __str__(self):
         return f"{self.title_name}"
+
+
+class ProductVersion(models.Model):
+
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Продукт', related_name='version')
+    version_number = models.PositiveIntegerField(verbose_name='Номер версии', **NULLABLE)
+    version_name = models.CharField(max_length=50, verbose_name='Имя версии', **NULLABLE)
+    is_active = models.BooleanField(default=False, verbose_name='Активная версия')
+
+    def __str__(self):
+        return f'{self.version_number}'
+

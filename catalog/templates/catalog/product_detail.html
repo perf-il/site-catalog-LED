@@ -27,7 +27,7 @@
 
                 <p><b>Дата создания:</b> {{ object.data_creating }}</p>
                 <p><b>Дата редактирования:</b> {{ object.data_updating }}</p>
-                <a href="{% url 'catalog:contact' %}"><button type="button" class="btn btn-lg btn-block btn-outline-primary" >Заказать</button></a>
+                <a href="{% url 'catalog:product_update' object.id %}"><button type="button" class="btn btn-lg btn-block btn-outline-primary" >Редактировать</button></a>
               </div>
 
             </div>
