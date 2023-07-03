@@ -1,11 +1,13 @@
+from django.contrib.messages import success
+from django.forms import inlineformset_factory
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
 from pytils.translit import slugify
 
-
-from catalog.models import Product, Blog
+from catalog.forms import ProductForm, ProductVersionForm
+from catalog.models import Product, Blog, ProductVersion
 
 
 def home(request):
@@ -80,6 +82,9 @@ class BlogCreateView(generic.CreateView):
     model = Blog
     fields = ['title_name', 'content', 'preview']
     success_url = reverse_lazy('catalog:blog')
+    extra_context = {
+        'title': 'Написать статью'
+    }
 
     def form_valid(self, form):
         if form.is_valid:
@@ -93,11 +98,44 @@ class BlogUpdateView(generic.UpdateView):
     model = Blog
     fields = ['title_name', 'content', 'preview']
     success_url = reverse_lazy('catalog:blog')
+    extra_context = {
+        'title': 'Редактировать статью'
+    }
 
 
 class BlogDeleteView(generic.DeleteView):
     model = Blog
     success_url = reverse_lazy('catalog:blog')
+    extra_context = {
+        'title': 'Удалить статью'
+    }
 
 
+class ProductCreateView(generic.CreateView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy('catalog:catalog')
 
+
+class ProductUpdateView(generic.UpdateView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy('catalog:catalog')
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        VersionFormset = inlineformset_factory(Product, ProductVersion, form=ProductVersionForm, extra=1)
+        if self.request.method == 'POST':
+            context_data['formset'] = VersionFormset(self.request.POST, instance=self.object)
+        else:
+            context_data['formset'] = VersionFormset(instance=self.object)
+        return context_data
+
+    def form_valid(self, form):
+        formset = self.get_context_data()['formset']
+        self.object = form.save()
+        if formset.is_valid():
+            formset.instance = self.object
+            formset.save()
+
+        return super().form_valid(form)
