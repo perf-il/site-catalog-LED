@@ -8,6 +8,8 @@
 
 
       <div class="container">
+          <a href="{% url 'catalog:product_create' %}" class="btn btn-lg btn-outline-primary">Добавить товар</a>
+          <p></p>
 
           <div class="card-deck mb-3 text-center">
             {% for card in product_list%}
@@ -24,7 +26,9 @@
                 {% else %}
                   <div><a href="{% url 'catalog:product' pk=card.id %}"><img src="/media/preview/default.JPG" align="left" width="100%" height="100%"></a></div>
                 {% endif %}
-
+                {% for version in card.version.all %}
+                  <p class="card-text"> {% if version.is_active %}Активная версия: {{ version }} {% endif %}</p>
+                {% endfor %}
                 <ul class="list-unstyled mt-3 mb-4">
                   <li>{{ card.description | title | slice:"0:47" }}</li>
 
