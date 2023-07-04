@@ -11,7 +11,7 @@
                     <div class="card mb-3 box-shadow">
 
                         <div class="card-body">
-                            <form method="post" id="new_article">
+                            <form method="post" id="new_article" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <div class="create-blog">{{ form.as_p }}</div>
 
