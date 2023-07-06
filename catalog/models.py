@@ -3,8 +3,7 @@ from transliterate import slugify
 
 from django.db import models
 
-
-NULLABLE = {'blank': True, 'null': True}
+from users.models import User, NULLABLE
 
 
 class Category(models.Model):
@@ -25,6 +24,7 @@ class Product(models.Model):
     price = models.FloatField(verbose_name='Цена')
     data_creating = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     data_updating = models.DateTimeField(auto_now=True, verbose_name='Дата последнего изменения', **NULLABLE)
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, verbose_name='Добавлено', **NULLABLE)
 
     def __str__(self):
         return f"{self.name}, {self.category}"
