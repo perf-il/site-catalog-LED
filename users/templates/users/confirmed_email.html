@@ -1,0 +1,12 @@
+{% extends 'catalog/base.html' %}
+  {% block content %}
+
+    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h5>Почтовый адрес подтвержден</h5>
+        <div class="pt-md-5">
+            <a href="{% url 'catalog:catalog' %}" type="button" class="btn btn-lg btn-outline-primary" >Перейти в каталог</a>
+        </div>
+    </div>
+
+
+        {% endblock %}
