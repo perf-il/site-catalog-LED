@@ -1,7 +1,10 @@
+from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from django.contrib.messages import success
 from django.forms import inlineformset_factory
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views import generic
 
 from pytils.translit import slugify
@@ -86,8 +89,12 @@ class BlogCreateView(generic.CreateView):
         'title': 'Написать статью'
     }
 
+    @method_decorator(login_required(login_url='users:login'))
+    def dispatch(self, request, *args, **kwargs):
+        return super(BlogCreateView, self).dispatch(request, *args, **kwargs)
+
     def form_valid(self, form):
-        if form.is_valid:
+        if form.is_valid():
             fields = form.save(commit=False)
             fields.slug = slugify(form.cleaned_data['title_name'])
             fields.save()
@@ -102,6 +109,10 @@ class BlogUpdateView(generic.UpdateView):
         'title': 'Редактировать статью'
     }
 
+    @method_decorator(login_required(login_url='users:login'))
+    def dispatch(self, request, *args, **kwargs):
+        return super(BlogUpdateView, self).dispatch(request, *args, **kwargs)
+
 
 class BlogDeleteView(generic.DeleteView):
     model = Blog
@@ -110,17 +121,36 @@ class BlogDeleteView(generic.DeleteView):
         'title': 'Удалить статью'
     }
 
+    @method_decorator(login_required(login_url='users:login'))
+    def dispatch(self, request, *args, **kwargs):
+        return super(BlogDeleteView, self).dispatch(request, *args, **kwargs)
+
 
 class ProductCreateView(generic.CreateView):
+
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:catalog')
+
+    @method_decorator(login_required(login_url='users:login'))
+    def dispatch(self, request, *args, **kwargs):
+        return super(ProductCreateView, self).dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        if form.is_valid():
+            fields = form.save(commit=False)
+            fields.created_by = self.request.user
+        return super().form_valid(form)
 
 
 class ProductUpdateView(generic.UpdateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:catalog')
+
+    @method_decorator(login_required(login_url='users:login'))
+    def dispatch(self, request, *args, **kwargs):
+        return super(ProductUpdateView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
@@ -137,5 +167,4 @@ class ProductUpdateView(generic.UpdateView):
         if formset.is_valid():
             formset.instance = self.object
             formset.save()
-
         return super().form_valid(form)
