@@ -6,8 +6,11 @@ from catalog.models import Product, ProductVersion
 class StyleFormMixin:
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'form-control'
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control',
+                'autocomplete': 'off'
+            })
 
 
 class ProductForm(StyleFormMixin, forms.ModelForm):
@@ -15,7 +18,7 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = ('name', 'description', 'preview', 'category', 'price')
 
     def clean_description(self, forbidden_lists=forbidden_list):
 
