@@ -18,7 +18,7 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ('name', 'description', 'preview', 'category', 'price')
+        fields = ('name', 'description', 'preview', 'category', 'price', 'is_public',)
 
     def clean_description(self, forbidden_lists=forbidden_list):
 
