@@ -1,7 +1,9 @@
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.contrib.messages import success
 from django.forms import inlineformset_factory
+from django.http import Http404
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -81,17 +83,13 @@ class BlogDetailView(generic.DetailView):
         return context_data
 
 
-class BlogCreateView(generic.CreateView):
+class BlogCreateView(LoginRequiredMixin, generic.CreateView):
     model = Blog
     fields = ['title_name', 'content', 'preview']
     success_url = reverse_lazy('catalog:blog')
     extra_context = {
         'title': 'Написать статью'
     }
-
-    @method_decorator(login_required(login_url='users:login'))
-    def dispatch(self, request, *args, **kwargs):
-        return super(BlogCreateView, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         if form.is_valid():
@@ -101,7 +99,7 @@ class BlogCreateView(generic.CreateView):
         return super().form_valid(form)
 
 
-class BlogUpdateView(generic.UpdateView):
+class BlogUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Blog
     fields = ['title_name', 'content', 'preview']
     success_url = reverse_lazy('catalog:blog')
@@ -109,32 +107,21 @@ class BlogUpdateView(generic.UpdateView):
         'title': 'Редактировать статью'
     }
 
-    @method_decorator(login_required(login_url='users:login'))
-    def dispatch(self, request, *args, **kwargs):
-        return super(BlogUpdateView, self).dispatch(request, *args, **kwargs)
 
-
-class BlogDeleteView(generic.DeleteView):
+class BlogDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Blog
     success_url = reverse_lazy('catalog:blog')
     extra_context = {
         'title': 'Удалить статью'
     }
 
-    @method_decorator(login_required(login_url='users:login'))
-    def dispatch(self, request, *args, **kwargs):
-        return super(BlogDeleteView, self).dispatch(request, *args, **kwargs)
 
-
-class ProductCreateView(generic.CreateView):
+class ProductCreateView(LoginRequiredMixin, generic.CreateView):
 
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:catalog')
 
-    @method_decorator(login_required(login_url='users:login'))
-    def dispatch(self, request, *args, **kwargs):
-        return super(ProductCreateView, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         if form.is_valid():
@@ -143,14 +130,11 @@ class ProductCreateView(generic.CreateView):
         return super().form_valid(form)
 
 
-class ProductUpdateView(generic.UpdateView):
+class ProductUpdateView(LoginRequiredMixin, PermissionRequiredMixin, generic.UpdateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:catalog')
-
-    @method_decorator(login_required(login_url='users:login'))
-    def dispatch(self, request, *args, **kwargs):
-        return super(ProductUpdateView, self).dispatch(request, *args, **kwargs)
+    permission_required = 'catalog.change_product'
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
@@ -168,3 +152,21 @@ class ProductUpdateView(generic.UpdateView):
             formset.instance = self.object
             formset.save()
         return super().form_valid(form)
+
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        if self.request.user.is_superuser or self.request.user.has_perm('catalog.change_product'):
+            return self.object
+        if self.object.created_by != self.request.user:
+            raise Http404('Нет прав доступа')
+        return self.object
+
+
+class ProductDeleteView(LoginRequiredMixin, PermissionRequiredMixin, generic.DeleteView):
+    model = Product
+    success_url = reverse_lazy('catalog:catalog')
+    permission_required = 'catalog.change_product'
+    extra_context = {
+        'title': 'Удалить продукт'
+    }
+
