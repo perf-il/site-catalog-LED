@@ -13,30 +13,32 @@
 
           <div class="card-deck mb-3 text-center">
             {% for card in product_list%}
-            <div class="card mb-4 box-shadow">
+              {% if card.is_public %}
+                <div class="card mb-4 box-shadow">
 
-              <div class="card-header">
-                <h4 class="my-0 font-weight-normal">{{ card.name }}</h4>
-              </div>
+                  <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">{{ card.name }}</h4>
+                  </div>
 
-              <div class="card-body">
-                <h1 class="card-title pricing-card-title">${{ card.price }} </h1>
-                {% if card.preview %}
-                  <div><a href="{% url 'catalog:product' pk=card.id %}"><img src='{% mediapath card.preview %}'  align="left" width="100%" height="100%"></a></div>
-                {% else %}
-                  <div><a href="{% url 'catalog:product' pk=card.id %}"><img src="/media/preview/default.JPG" align="left" width="100%" height="100%"></a></div>
-                {% endif %}
-                {% for version in card.version.all %}
-                  <p class="card-text"> {% if version.is_active %}Активная версия: {{ version }} {% endif %}</p>
-                {% endfor %}
-                <ul class="list-unstyled mt-3 mb-4">
-                  <li>{{ card.description | title | slice:"0:47" }}</li>
+                  <div class="card-body">
+                    <h1 class="card-title pricing-card-title">${{ card.price }} </h1>
+                    {% if card.preview %}
+                      <div><a href="{% url 'catalog:product' pk=card.id %}"><img src='{% mediapath card.preview %}'  align="left" width="100%" height="100%"></a></div>
+                    {% else %}
+                      <div><a href="{% url 'catalog:product' pk=card.id %}"><img src="/media/preview/default.JPG" align="left" width="100%" height="100%"></a></div>
+                    {% endif %}
+                    {% for version in card.version.all %}
+                      <p class="card-text"> {% if version.is_active %}Активная версия: {{ version }} {% endif %}</p>
+                    {% endfor %}
+                    <ul class="list-unstyled mt-3 mb-4">
+                      <li>{{ card.description | title | slice:"0:47" }}</li>
 
-                </ul>
-                <a href="{% url 'catalog:contact' %}"><button type="button" class="btn btn-lg btn-block btn-outline-primary" >Заказать</button></a>
-              </div>
+                    </ul>
+                    <a href="{% url 'catalog:contact' %}"><button type="button" class="btn btn-lg btn-block btn-outline-primary" >Заказать</button></a>
+                  </div>
 
-            </div>
+                </div>
+            {% endif %}
     {% endfor %}
           </div>
 
