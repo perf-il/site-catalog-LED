@@ -122,7 +122,6 @@ class ProductCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = ProductForm
     success_url = reverse_lazy('catalog:catalog')
 
-
     def form_valid(self, form):
         if form.is_valid():
             fields = form.save(commit=False)
@@ -130,11 +129,10 @@ class ProductCreateView(LoginRequiredMixin, generic.CreateView):
         return super().form_valid(form)
 
 
-class ProductUpdateView(LoginRequiredMixin, PermissionRequiredMixin, generic.UpdateView):
+class ProductUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:catalog')
-    permission_required = 'catalog.change_product'
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
