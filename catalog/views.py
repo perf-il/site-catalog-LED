@@ -2,6 +2,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.contrib.messages import success
+from django.core.cache import cache
 from django.forms import inlineformset_factory
 from django.http import Http404
 from django.shortcuts import render
@@ -13,6 +14,8 @@ from pytils.translit import slugify
 
 from catalog.forms import ProductForm, ProductVersionForm
 from catalog.models import Product, Blog, ProductVersion
+from catalog.services import get_category_cached
+from config import settings
 
 
 def home(request):
@@ -51,6 +54,7 @@ class CatalogDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
         context_data['title'] = self.get_object()
+        context_data['category'] = get_category_cached(self.object.pk)
         return context_data
 
 
