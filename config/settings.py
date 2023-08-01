@@ -86,9 +86,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'catalog',
-        'USER': 'postgres',
-        'PASSWORD': '4444'
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD')
     }
 }
 
@@ -147,10 +147,10 @@ LOGOUT_REDIRECT_URL = '/catalog'
 LOGIN_URL = '/users/login'
 
 
-EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = 'nice.django@yandex.ru'
-EMAIL_HOST_PASSWORD = 'perrgmyqnpbooapx'
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_SSL = True
 EMAIL_USE_TLS = False
 SERVER_EMAIL = EMAIL_HOST_USER
